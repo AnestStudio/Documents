@@ -85,19 +85,35 @@ CREATE USER 'sammy'@'remote_server_ip' IDENTIFIED BY 'password';
 <br />
 
 Sau đó cấp cho người dùng mới những đặc quyền phù hợp với nhu cầu cụ thể của bạn. 
-Ví dụ sau cấp cho người dùng các đặc quyền chung đối với 
+Ví dụ sau cấp cho người dùng các đặc quyền chung đối với:
 - `CREATE`, `ALTER`, và `DROP` cơ sở dữ liệu, bảng và người dùng
 - `INSERT`, `UPDATE` và `DELETE` dữ liệu từ bất kỳ bảng nào trên máy chủ.
 - `SELECT`, tạo khóa ngoại bằng `REFERENCES` từ khóa và thực hiện `FLUSH` các thao tác với `RELOAD`.
   
-Tuy nhiên, bạn chỉ nên cấp cho người dùng những quyền mà họ cần, vì vậy, bạn có thể thoải mái điều chỉnh các đặc quyền của người dùng nếu cần.
+Tuy nhiên, bạn chỉ nên cấp cho người dùng những quyền mà họ cần, vì vậy bạn có thể thoải mái điều chỉnh các đặc quyền của người dùng nếu cần.
 ```sql
-GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'sammy'@'remote_server_ip' WITH GRANT OPTION;
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD ON *.* TO 'sammy'@'remote_server_ip' WITH GRANT OPTION;
 ```
+
+Bạn cũng có thể cấp đầy đủ quyền `ALL PRIVILEGES` cho người dùng mới như sau:
+```sql
+GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'remote_server_ip' WITH GRANT OPTION;
+```
+
+> Không nên cấp đầy đủ quyền cho người dùng mới một cách dễ dàng, vì bất kỳ ai có quyền truy cập vào MySQL này sẽ có toàn quyền kiểm soát mọi cơ sở dữ liệu trên máy chủ.
+
+<br />
 
 Theo đó, tốt nhất là chạy lệnh `FLUSH PRIVILEGES`. Điều này sẽ giải phóng mọi bộ nhớ mà máy chủ đã lưu vào bộ nhớ đệm do các câu lệnh `CREATE USER` trước đó `GRANT`:
 ```sql
 FLUSH PRIVILEGES;
+```
+
+<br />
+
+Sau đó, bạn có thể thoát khỏi MySQL client:
+```sql
+exit
 ```
 
 <br />
