@@ -124,6 +124,27 @@ mysql -u sammy -p
 ```
 
 <br />
+<br />
+
+Cuối cùng, giả sử bạn đã định cấu hình tường lửa trên máy chủ cơ sở dữ liệu của mình, bạn cũng cần mở cổng `3306` — cổng mặc định của MySQL — để cho phép lưu lượng truy cập đến MySQL.
+
+Nếu bạn chỉ định truy cập máy chủ cơ sở dữ liệu từ một máy cụ thể, bạn có thể cấp độc quyền cho máy đó kết nối với cơ sở dữ liệu từ xa bằng lệnh sau. Đảm bảo thay thế `remote_IP_address` bằng địa chỉ IP thực của máy bạn dự định kết nối:
+```sql
+sudo ufw allow from remote_IP_address to any port 3306
+```
+Nếu sau này bạn cần truy cập cơ sở dữ liệu từ các máy khác, bạn có thể cấp cho họ quyền truy cập đặc biệt bằng lệnh này. Chỉ cần nhớ bao gồm địa chỉ IP tương ứng của họ.
+
+<br />
+
+Ngoài ra, bạn có thể cho phép kết nối đến cơ sở dữ liệu MySQL của mình từ bất kỳ địa chỉ IP nào bằng lệnh sau:
+```sql
+sudo ufw allow 3306
+```
+
+> Cảnh báo: Lệnh này sẽ cho phép mọi người truy cập cơ sở dữ liệu MySQL của bạn. Không chạy nó nếu cơ sở dữ liệu của bạn chứa bất kỳ dữ liệu nhạy cảm nào.
+
+<br />
+<br />
 
 Nguồn tham khảo: [How To Allow Remote Access to MySQL](https://www.digitalocean.com/community/tutorials/how-to-allow-remote-access-to-mysql)
 
