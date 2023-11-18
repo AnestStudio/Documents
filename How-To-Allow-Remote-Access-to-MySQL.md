@@ -71,10 +71,16 @@ Nếu bạn đã bật xác thực mật khẩu cho __root__, thay vào đó, b�
 mysql -u root -p
 ```
 
+<br />
+
 Bạn có thể tạo một tài khoản người dùng mới sẽ chỉ kết nối từ máy chủ từ xa bằng lệnh sau:
 ```java
 CREATE USER 'sammy'@'remote_server_ip' IDENTIFIED BY 'password';
 ```
+
+- Thay `sammy` bằng tên tài khoản muốn tạo
+- Thay `remote_server_ip` bằng địa chỉ IP bạn cho phép truy cập từ xa đến MySQL, nếu bạn không muốn giới hạn đại chỉ IP truy cập thì sử dụng `%`
+- Thay `password` bằng mật khẩu muốn tạo
 
 <br />
 <br />
