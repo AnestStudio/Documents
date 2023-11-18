@@ -8,6 +8,8 @@ Một trong những vấn đề phổ biến hơn mà người dùng gặp phả
 $ sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 
+<br />
+
 Tìm kiếm dòng lệnh `bind-address`:
 
 */etc/mysql/mysql.conf.d/mysqld.cnf*
@@ -23,3 +25,15 @@ bind-address            = 127.0.0.1
 ```
 
 Theo mặc định, giá trị này được đặt thành `127.0.0.1`, nghĩa là máy chủ sẽ chỉ tìm kiếm các kết nối cục bộ. Bạn sẽ cần thay đổi chỉ thị này để tham chiếu địa chỉ IP bên ngoài. Với mục đích khắc phục sự cố, bạn có thể đặt lệnh này thành địa chỉ IP ký tự đại diện, `*`, `::` hoặc `0.0.0.0`:
+
+*/etc/mysql/mysql.conf.d/mysqld.cnf*
+```java
+. . .
+lc-messages-dir = /usr/share/mysql
+skip-external-locking
+#
+# Instead of skip-networking the default is now to listen only on
+# localhost which is more compatible and is not less secure.
+bind-address            = 0.0.0.0
+. . .
+```
