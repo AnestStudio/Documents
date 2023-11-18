@@ -40,4 +40,20 @@ bind-address            = 0.0.0.0
 . . .
 ```
 
+<br />
+
 > Lưu ý: Trong một số phiên bản nhất định của MySQL, lệnh ` bind-address` có thể không có trong tệp `mysqld.cnf` theo mặc định. Trong trường hợp này, hãy thêm dòng `bind-address = 0.0.0.0` vào cuối tệp.
+
+Sau khi thay đổi dòng này, hãy lưu và đóng tệp (`CTRL + X`, `Y`, sau đó `ENTER` nếu bạn chỉnh sửa nó bằng `nano`).
+
+<br />
+
+Sau đó khởi động lại dịch vụ MySQL để những thay đổi bạn đã thực hiện `mysqld.cnf` có hiệu lực:
+
+```java
+sudo systemctl restart mysql
+```
+
+
+<br />
+<br />
