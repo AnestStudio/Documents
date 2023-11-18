@@ -104,7 +104,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'remote_server_ip' WITH GRANT OPTION;
 
 <br />
 
-Theo đó, tốt nhất là chạy lệnh `FLUSH PRIVILEGES`. Điều này sẽ giải phóng mọi bộ nhớ mà máy chủ đã lưu vào bộ nhớ đệm do các câu lệnh `CREATE USER` trước đó `GRANT`:
+Tiếp theo, nên chạy lệnh `FLUSH PRIVILEGES`. Điều này sẽ giải phóng mọi bộ nhớ mà máy chủ đã lưu vào bộ nhớ đệm do các câu lệnh `CREATE USER` trước đó `GRANT`:
 ```sql
 FLUSH PRIVILEGES;
 ```
@@ -114,6 +114,13 @@ FLUSH PRIVILEGES;
 Sau đó, bạn có thể thoát khỏi MySQL client:
 ```sql
 exit
+```
+
+<br />
+
+Trong tương lai, để đăng nhập với tư cách người dùng MySQL mới, bạn sẽ sử dụng lệnh như sau:
+```sql
+mysql -u sammy -p
 ```
 
 <br />
