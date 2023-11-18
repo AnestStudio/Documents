@@ -82,6 +82,11 @@ CREATE USER 'sammy'@'remote_server_ip' IDENTIFIED BY 'password';
 - Thay `password` bằng mật khẩu muốn tạo
 - Thay `remote_server_ip` bằng địa chỉ IP bạn muốn cho phép truy cập từ xa đến MySQL, nếu bạn không muốn giới hạn địa chỉ IP truy cập đến MySQL thì sử dụng `%`
 
+Sau đó cấp cho người dùng mới những đặc quyền phù hợp với nhu cầu cụ thể của bạn. Ví dụ sau cấp cho người dùng các đặc quyền chung đối với CREATE, ALTER, và DROPcơ sở dữ liệu, bảng và người dùng, cũng như quyền đối với INSERT, UPDATEvà DELETEdữ liệu từ bất kỳ bảng nào trên máy chủ. Nó cũng cấp cho người dùng khả năng truy vấn dữ liệu bằng SELECT, tạo khóa ngoại bằng REFERENCEStừ khóa và thực hiện FLUSHcác thao tác với RELOADđặc quyền. Tuy nhiên, bạn chỉ nên cấp cho người dùng những quyền mà họ cần, vì vậy, bạn có thể thoải mái điều chỉnh các đặc quyền của người dùng nếu cần.
+```java
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'sammy'@'remote_server_ip' WITH GRANT OPTION;
+```
+
 <br />
 
 Nguồn tham khảo: [How To Allow Remote Access to MySQL](https://www.digitalocean.com/community/tutorials/how-to-allow-remote-access-to-mysql)
